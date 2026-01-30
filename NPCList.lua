@@ -68,7 +68,9 @@ addToDefaultNpcsToMark("Stormwind City", "sw_dummies", {
   ["0xF13000C55426FE53"] = CROSS,
 })
 
+
 --/////////////// Naxxramas ///////////////
+
 
 defaultNpcsToMark[L["Naxxramas"]] = {}
 
@@ -665,7 +667,9 @@ addToDefaultNpcsToMark(L["Naxxramas"], "construct_grobb_far", {
   ["0xF130003E990158EE"] = SKULL, -- Stitched Spewer
 })
 
+
 --/////////////// AQ40 ///////////////
+
 
 defaultNpcsToMark[L["Ahn'Qiraj"]] = {}
 
@@ -910,7 +914,9 @@ addToDefaultNpcsToMark(L["Ahn'Qiraj"], "warder_nullifier_4", {
   ["0xF130003BD00157D9"] = SQUARE, -- Obsidian Nullifier
 })
 
+
 --/////////////// ZG ///////////////
+
 
 defaultNpcsToMark[L["Zul'Gurub"]] = {}
 
@@ -1314,142 +1320,147 @@ addToDefaultNpcsToMark(L["Zul'Gurub"], "hakkar_large_2", {
   ["0xF130002C5C11F382"] = UNMARKED,
 })
 
---/////////////// ES ///////////////
+
+--/////////////// Emerald Sanctum ///////////////
+
 
 local errenius = "0xF13000ED4B2739FA"
 local errenius_mark = CIRCLE
 
 addToDefaultNpcsToMark(L["Emerald Sanctum"], "entrance", {
-  ["0xF13000ED482739F2"] = DIAMOND, -- sancutum wyrm pat
-  ["0xF13000ED4A273A45"] = MOON, -- sancutum scalebane pat
-  ["0xF13000ED4A273A43"] = STAR, -- sancutum scalebane pat
+  ["0xF13000ED482739F2"] = DIAMOND, -- Sancutum Wyrm
+  ["0xF13000ED4A273A45"] = MOON, -- Sancutum Scalebane
+  ["0xF13000ED4A273A43"] = STAR, -- Sancutum Scalebane
 
   -- dreamer_pack_left_1
-  ["0xF13000ED462739E2"] = UNMARKED, -- sanctum dreamer, left
-  ["0xF13000ED462739E3"] = UNMARKED, -- sanctum dreamer, left
-  ["0xF13000ED462739E4"] = UNMARKED, -- sanctum dreamer, left
-  ["0xF13000ED462739E5"] = UNMARKED, -- sanctum dreamer, left
-  ["0xF13000ED462739E6"] = UNMARKED, -- sanctum dreamer, left
-  ["0xF13000ED462739E7"] = UNMARKED, -- sanctum dreamer, left
-  ["0xF13000ED462739E8"] = UNMARKED, -- sanctum dreamer, left
-  ["0xF13000ED462739E9"] = UNMARKED, -- sanctum dreamer, left
-  ["0xF13000ED462739EB"] = UNMARKED, -- sanctum dreamer, left
+  ["0xF13000ED462739E2"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462739E3"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462739E4"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462739E5"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462739E6"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462739E7"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462739E8"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462739E9"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462739EB"] = UNMARKED, -- Sanctum Dreamer
 
   -- wyrmkin_pack_right_1
-  ["0xF13000ED462739F1"] = UNMARKED, -- sanctum dreamer, right
-  ["0xF13000ED462739F0"] = UNMARKED, -- sanctum dreamer, right
-  ["0xF13000ED462739EF"] = UNMARKED, -- sanctum dreamer, right
-  ["0xF13000ED462739EE"] = UNMARKED, -- sanctum dreamer, right
-  ["0xF13000ED472739ED"] = SKULL, -- sanctum dragonkin, right
-  ["0xF13000ED472739EA"] = CROSS, -- sanctum dragonkin, right
+  ["0xF13000ED472739EA"] = SKULL, -- Sanctum Dragonkin
+  ["0xF13000ED472739ED"] = CROSS, -- Sanctum Dragonkin
+  ["0xF13000ED462739F1"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462739F0"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462739EF"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462739EE"] = UNMARKED, -- Sanctum Dreamer
 })
 
 addToDefaultNpcsToMark(L["Emerald Sanctum"], "wyrmkin_pack_right_2", {
-  ["0xF13000ED492739F3"] = SKULL, -- sanctum wyrmkin
-  ["0xF13000ED492739F4"] = CROSS, -- sanctum wyrmkin
-  ["0xF13000ED472739F5"] = SQUARE, -- sanctum dragonkin
-  ["0xF13000ED462739F6"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED462739F7"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED462739F8"] = UNMARKED, -- sanctum dreamer
+  ["0xF13000ED492739F3"] = SKULL, -- Sanctum Wyrmkin
+  ["0xF13000ED492739F4"] = CROSS, -- Sanctum Wyrmkin
+  ["0xF13000ED472739F5"] = SQUARE, -- Sanctum Dragonkin
+  ["0xF13000ED462739F6"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462739F7"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462739F8"] = UNMARKED, -- Sanctum Dreamer
 })
 
 addToDefaultNpcsToMark(L["Emerald Sanctum"], "dreamer_pack_left_2", {
-  ["0xF13000ED49273A17"] = SKULL, -- sanctum wyrmkin
-  ["0xF13000ED46273A16"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A15"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A14"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A12"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A10"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A0F"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A0D"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A0C"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A0B"] = UNMARKED, -- sanctum dreamer
+  ["0xF13000ED49273A17"] = SKULL, -- Sanctum Wyrmkin
+  ["0xF13000ED46273A16"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A15"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A14"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A12"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A10"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A0F"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A0D"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A0C"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A0B"] = UNMARKED, -- Sanctum Dreamer
 
   [errenius] = errenius_mark, -- increase chance of spotting him early
 })
 
 addToDefaultNpcsToMark(L["Emerald Sanctum"], "wyrmkin_pack_left_1", {
-  ["0xF13000ED47273A1C"] = SQUARE, -- sanctum dragonkin
-  ["0xF13000ED4A273A1A"] = TRIANGLE, -- sanctum scalebane
-  ["0xF13000ED49273A18"] = CROSS, -- sanctum wyrmkin
-  ["0xF13000EF1C275495"] = SKULL, -- sanctum supressor
-  ["0xF13000ED47273A1E"] = CIRCLE, -- sanctum dragonkin
+  ["0xF13000EF1C275495"] = SKULL, -- Sanctum Supressor
+  ["0xF13000ED49273A18"] = CROSS, -- Sanctum Wyrmkin
+  ["0xF13000ED47273A1C"] = SQUARE, -- Sanctum Dragonkin
+  ["0xF13000ED47273A1E"] = TRIANGLE, -- Sanctum Dragonkin
+  ["0xF13000ED4A273A1A"] = CIRCLE, -- Sanctum Scalebane
 
   [errenius] = errenius_mark, -- increase chance of spotting him early
 })
 
 addToDefaultNpcsToMark(L["Emerald Sanctum"], "wyrmkin_pack_left_2", {
-  ["0xF13000ED46273A26"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A1F"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED49273A25"] = SKULL, -- sanctum wyrmkin
-  ["0xF13000ED49273A24"] = SQUARE, -- sanctum wyrmkin
-  ["0xF13000ED46273A20"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A27"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED48273A19"] = CROSS, -- sanctum wrym
+  ["0xF13000ED49273A25"] = SKULL, -- Sanctum Wyrmkin
+  ["0xF13000ED49273A24"] = CROSS, -- SSnctum Wyrmkin
+  ["0xF13000ED48273A19"] = SQUARE, -- Sanctum Wrym
+  ["0xF13000ED46273A20"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A27"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A26"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A1F"] = UNMARKED, -- Sanctum Dreamer
+
   [errenius] = errenius_mark, -- increase chance of spotting him early
 })
 
 addToDefaultNpcsToMark(L["Emerald Sanctum"], "dreamer_pack_right_1", {
-  ["0xF13000ED462754A3"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED462754A4"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED462754A5"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED462754A6"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED462754A7"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED462754A8"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED462754A9"] = UNMARKED, -- sanctum dreamer
+  ["0xF13000ED462754A3"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462754A4"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462754A5"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462754A6"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462754A7"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462754A8"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462754A9"] = UNMARKED, -- Sanctum Dreamer
 
   [errenius] = errenius_mark, -- increase chance of spotting him early
 })
 
 addToDefaultNpcsToMark(L["Emerald Sanctum"], "wyrmkin_pack_left_3", {
-  ["0xF13000ED46273A4B"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A4C"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A54"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A56"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A57"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A58"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A59"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED4A273A48"] = CROSS, -- sanctum scalebane
-  ["0xF13000ED4A273A49"] = SKULL, -- sanctum scalebane
-  ["0xF13000ED49273A47"] = TRIANGLE, -- sanctum wyrmkin -- ??
-  ["0xF13000ED47273A1C"] = SQUARE, -- sanctum dragonkin
+  ["0xF13000ED49273A47"] = SKULL, -- Sanctum Wyrmkin -- ??
+  ["0xF13000ED47273A1C"] = CROSS, -- Sanctum Dragonkin
+  ["0xF13000ED4A273A48"] = SQUARE, -- Sanctum Scalebane
+  ["0xF13000ED4A273A49"] = TRIANGLE, -- Sanctum Scalebane
+  ["0xF13000ED46273A4B"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A4C"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A54"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A56"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A57"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A58"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A59"] = UNMARKED, -- Sanctum Dreamer
 
   [errenius] = errenius_mark, -- increase chance of spotting him early
 })
 
 addToDefaultNpcsToMark(L["Emerald Sanctum"], "dreamer_pack_end", {
-  ["0xF13000ED47273A46"] = CROSS, -- sanctum dragonkin
-  ["0xF13000ED46273A28"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A29"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A2A"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A2B"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A2C"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A2D"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A2E"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A2F"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED46273A31"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000EF1C275497"] = SKULL, -- sanctum supressor
+  ["0xF13000EF1C275497"] = SKULL, -- Sanctum Supressor
+  ["0xF13000ED47273A46"] = CROSS, -- Sanctum Dragonkin
+  ["0xF13000ED46273A28"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A29"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A2A"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A2B"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A2C"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A2D"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A2E"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A2F"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED46273A31"] = UNMARKED, -- Sanctum Dreamer
 
   [errenius] = errenius_mark, -- increase chance of spotting him early
 })
 
 addToDefaultNpcsToMark(L["Emerald Sanctum"], "wyrmkin_pack_right_3", {
-  ["0xF13000ED462754A2"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED4627549E"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED462754A0"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED462754A1"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000ED462754A2"] = UNMARKED, -- sanctum dreamer
-  ["0xF13000EF1C275499"] = SKULL, -- sanctum supressor
-  ["0xF13000ED4727549C"] = TRIANGLE, -- sanctum dragonkin
-  ["0xF13000ED4A27549D"] = CROSS, -- sanctum scalebane
-  ["0xF13000ED4A27549B"] = SQUARE, -- sanctum scalebane
+  ["0xF13000EF1C275499"] = SKULL, -- Sanctum Supressor
+  ["0xF13000ED4727549C"] = CROSS, -- Sanctum Dragonkin
+  ["0xF13000ED4A27549D"] = SQUARE, -- Sanctum Scalebane
+  ["0xF13000ED4A27549B"] = TRIANGLE, -- Sanctum Scalebane
+  ["0xF13000ED462754A2"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED4627549E"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462754A0"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462754A1"] = UNMARKED, -- Sanctum Dreamer
+  ["0xF13000ED462754A2"] = UNMARKED, -- Sanctum Dreamer
 })
 
 addToDefaultNpcsToMark(L["Emerald Sanctum"], "solnius", {
   ["0xF13000ED4C2739E1"] = UNMARKED, -- solnius
 })
 
+
 --/////////////// MC ///////////////
+
 
 addToDefaultNpcsToMark(L["Molten Core"], "giants_1", {
   ["0xF130002D8A00DD80"] = SKULL, -- Molten Giant
@@ -1740,7 +1751,9 @@ addToDefaultNpcsToMark(L["Molten Core"], "domo", {
   ["0xF130002EF2278D50"] = UNMARKED, -- Majordomo Executus
 })
 
+
 --/////////////// AQ20 ///////////////
+
 
 addToDefaultNpcsToMark(L["Ruins of Ahn'Qiraj"], "entrance", {
   ["0xF130003BDC11FAC8"] = SKULL,
@@ -1885,7 +1898,9 @@ addToDefaultNpcsToMark(L["Ruins of Ahn'Qiraj"], "ossirian_room", {
   ["0xF130003BFB11FBE1"] = MOON,
 })
 
+
 --/////////////// BWL ///////////////
+
 
 addToDefaultNpcsToMark(L["Blackwing Lair"], "razorgore", {
   ["0xF13000310D0149A5"] = SKULL, -- Grethok the Controller
@@ -2087,6 +2102,7 @@ addToDefaultNpcsToMark(L["Blackwing Lair"], "wyrmguard_3", {
 
 
 --/////////////// KARA10 ///////////////
+
 
 addToDefaultNpcsToMark(L["Tower of Karazhan"], "kara1", {
   ["0xF13000EF0A2747D1"] = UNMARKED,
@@ -2343,8 +2359,8 @@ addToDefaultNpcsToMark(L["Tower of Karazhan"], "kara_entrance_worker", {
 addToDefaultNpcsToMark(L["Tower of Karazhan"], "kara_entrance_outer", {
   ["0xF13000F1EE276B37"] = SKULL, -- Spectral Worker
   ["0xF13000F1EE276B38"] = CROSS, -- Spectral Worker
-  ["0xF13000F1ED276B39"] = SQUARE, -- Greater Gloomwing
-  ["0xF13000F1EE276B3B"] = TRIANGLE, -- Spectral Worker
+  ["0xF13000F1EE276B3B"] = SQUARE, -- Spectral Worker
+  ["0xF13000F1ED276B39"] = TRIANGLE, -- Greater Gloomwing
   ["0xF13000F1F1276B3A"] = CIRCLE, -- Shadowclaw Wargen
 })
 
@@ -2827,17 +2843,17 @@ addToDefaultNpcsToMark(L["The Rock of Desolation"], "outland_patrols", {
 
 addToDefaultNpcsToMark(L["The Rock of Desolation"], "pre_kruul_1", {
   ["0xF13000F246276CAF"] = SKULL, -- Draenei Warshipper
-  ["0xF13000F243276CB0"] = CROSS, -- Warbringer Overseer
-  ["0xF13000F245276CAD"] = SQUARE, -- Draenei Darkbinder
-  ["0xF13000F245276CAC"] = TRIANGLE, -- Draenei Darkbinder
+  ["0xF13000F245276CAD"] = CROSS, -- Draenei Darkbinder
+  ["0xF13000F245276CAC"] = SQUARE, -- Draenei Darkbinder
+  ["0xF13000F245276CAA"] = TRIANGLE, -- Draenei Darkbinder
   ["0xF13000F244276CAE"] = CIRCLE, -- Outcast Souleater
-  ["0xF13000F245276CAA"] = MOON, -- Draenei Darkbinder
+  ["0xF13000F243276CB0"] = MOON, -- Warbringer Overseer
 })
 
 addToDefaultNpcsToMark(L["The Rock of Desolation"], "pre_kruul_2", {
   ["0xF13000F240276CB6"] = SKULL, -- Doomguard Annihilator
-  ["0xF13000F240276CB3"] = CROSS, -- Draenei Darkbinder
-  ["0xF13000F240276CB4"] = SQUARE, --- Outcast Souleater
+  ["0xF13000F245276CB3"] = CROSS, -- Draenei Darkbinder
+  ["0xF13000F244276CB4"] = SQUARE, --- Outcast Souleater
 })
 
 addToDefaultNpcsToMark(L["The Rock of Desolation"], "pre_kruul_3", {
@@ -2862,6 +2878,7 @@ addToDefaultNpcsToMark(L["The Rock of Desolation"], "mephistroth", {
 
 
 --/////////////// Stratholme ///////////////
+
 
 addToDefaultNpcsToMark(L["Stratholme"], "live_pats", {
   ["0xF1300028AB11E66A"] = STAR, -- Eye of Naxxramas
