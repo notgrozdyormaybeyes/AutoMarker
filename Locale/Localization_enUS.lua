@@ -32,6 +32,41 @@ if GetLocale() == "enUS" then
         
         -- locations: timbermaw hold
         ["Timbermaw Hold"] = "Timbermaw Hold",
+        
+        ["Karrsh the Sentinel"] = "Karrsh the Sentinel", -- karrsh boss 
+        ["Timbermaw Sentinel"] = "Timbermaw Sentinel", -- karrsh spawned add  x2 after 60s
+        ["Timbermaw Defender"] = "Timbermaw Defender", -- karrsh spawned add  x1 after 15s
+        
+        ["Rotgrowl"] = "Rotgrowl", -- rotgrowl hunter boss
+        ["Kodiak"] = "Kodiak", -- kodiak bear pet
+        
+        ["Trioch the Devourer"] = "Trioch the Devourer", -- trioch hydra boss
+        ["Creeping Expulsion"] = "Creeping Expulsion", -- trioch spawned add
+        
+        ["Ormanos the Cracked"] = "Ormanos the Cracked", -- ormanos boss
+        ["Tremor of Ormanos"] = "Tremor of Ormanos", -- ormanos spawned giant add
+        ["Son of Ormanos"] = "Son of Ormanos", -- ormanos spawned earth elemental add
+        
+        ["Loktanag the Vile"] = "Loktanag the Vile", -- Loktanag boss
+        ["Corrupted Globule"] = "Corrupted Globule", -- Loktanag spawned add
+        
+        ["Dreamform of Kronn"] = "Dreamform of Kronn", -- archdruid kronn good boss
+        ["Archdruid Kronn"] = "Archdruid Kronn", -- archdruid kronn bad boss
+        ["Xavian Form"] = "Xavian Form", -- archdruid kronn satyr to interrupt and kill
+        ["Invading Miasma"] = "Invading Miasma", -- archdruid kronn ugly crawlers
+        
+        ["Chieftain Partath"] = "Chieftain Partath", -- Chieftain Partath boss
+        ["Withermaw Illuminator"] = "Withermaw Illuminator", -- chieftain partath adds
+        ["Withermaw Shadowkeeper"] = "Withermaw Shadowkeeper", -- chieftain partath spawned add
+        
+        ["Selenaxx Foulheart"] = "Selenaxx Foulheart", -- selenaxx boss
+        ["Foulheart Warlock"] = "Foulheart Warlock", -- selenaxx adds to interrupt
+        
+        ["Ursol"] = "Ursol", -- Ursol boss
+        ["Withermaw Corrupter"] = "Withermaw Corrupter", -- ursol furbolg adds
+        ["Nightmare Fiend"] = "Nightmare Fiend", -- ursol spawned fiend blue beam
+        ["Ursan Horror"] = "Ursan Horror", -- ursol spawned bear
+        
 
         -- mobs: dm
         ["Ironbark Protector"] = "Ironbark Protector",
