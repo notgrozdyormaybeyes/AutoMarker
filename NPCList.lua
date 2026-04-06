@@ -2891,21 +2891,34 @@ addToDefaultNpcsToMark(L["The Rock of Desolation"], "mephistroth", {
 --/////////////// Timbermaw Hold ///////////////
 
 
-addToDefaultNpcsToMark(L["Timbermaw Hold"], "karrsh", {
-  ["0xF13000F5D627973C"] = SKULL, -- Karrsh the Sentinel
-})
-
+-- addToDefaultNpcsToMark(L["Timbermaw Hold"], "karrsh", {
+--   ["0xF13000F5D627973C"] = SKULL, -- Karrsh the Sentinel
+-- })
+-- addToDefaultNpcsToMark(L["Timbermaw Hold"], "karrsh_adds", {
+--   ["0x0000000000000000"] = SKULL, -- Karrsh add
+-- })
+-- 
 addToDefaultNpcsToMark(L["Timbermaw Hold"], "rotgrowl_kodiak", {
   ["0xF13000F5D927A7C0"] = SKULL, -- Kodiak
   ["0xF13000F5D8279798"] = CROSS, -- Rotgrowl
 })
 
 addToDefaultNpcsToMark(L["Timbermaw Hold"], "kronn", {
-  ["0xF13000F5DA2796C1"] = DIAMOND, -- Archdruid Kronn - bad guy
+  ["0xF13000F5DA2796C1"] = DIAMOND, -- Archdruid Kronn - bad guy 
+  ["0xF13000ED1B27AA4E"] = CIRCLE, -- Dreamform of Kronn - good guy 
 })
-
-addToDefaultNpcsToMark(L["Timbermaw Hold"], "selenaxx", {
-  ["0xF13000F5DC279589"] = SKULL, -- Selenaxx Foulheart
+-- 
+-- addToDefaultNpcsToMark(L["Timbermaw Hold"], "selenaxx", {
+--   ["0xF13000F5DC279589"] = UNMARKED, -- Selenaxx Foulheart
+--   ["0xF1400B1F2300002E"] = SKULL, -- Foulheart Warlock add 80pct
+--   ["0xF1400B1F2000002D"] = CROSS, -- Foulheart Warlock add 80pct
+--   ["0xF1400B1F9800003F"] = SQUARE, -- Foulheart Warlock add
+--   ["0xF1400B1F9600003E"] = MOON, -- Foulheart Warlock add 60pct
+-- })
+-- 
+addToDefaultNpcsToMark(L["Timbermaw Hold"], "ursol_adds", {
+  ["0xF13000732827A7C0"] = SKULL, 
+  ["0xF13000732827A7C1"] = CROSS, 
 })
 
 --/////////////// Stratholme ///////////////
