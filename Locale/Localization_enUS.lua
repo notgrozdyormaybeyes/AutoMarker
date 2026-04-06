@@ -30,6 +30,8 @@ if GetLocale() == "enUS" then
         ["Dark Subservience fades from (.-).$"] = "Dark Subservience fades from (.-).$",
         ["^My patience has come to an end."] = "^My patience has come to an end.",
         
+        -- locations: timbermaw hold
+        ["Timbermaw Hold"] = "Timbermaw Hold",
 
         -- mobs: dm
         ["Ironbark Protector"] = "Ironbark Protector",
