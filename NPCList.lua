@@ -2888,6 +2888,26 @@ addToDefaultNpcsToMark(L["The Rock of Desolation"], "mephistroth", {
 })
 
 
+--/////////////// Timbermaw Hold ///////////////
+
+
+addToDefaultNpcsToMark(L["Timbermaw Hold"], "karrsh", {
+  ["0xF13000F5D627973C"] = SKULL, -- Karrsh the Sentinel
+})
+
+addToDefaultNpcsToMark(L["Timbermaw Hold"], "rotgrowl_kodiak", {
+  ["0xF13000F5D927A7C0"] = SKULL, -- Kodiak
+  ["0xF13000F5D8279798"] = CROSS, -- Rotgrowl
+})
+
+addToDefaultNpcsToMark(L["Timbermaw Hold"], "kronn", {
+  ["0xF13000F5DA2796C1"] = DIAMOND, -- Archdruid Kronn - bad guy
+})
+
+addToDefaultNpcsToMark(L["Timbermaw Hold"], "selenaxx", {
+  ["0xF13000F5DC279589"] = SKULL, -- Selenaxx Foulheart
+})
+
 --/////////////// Stratholme ///////////////
 
 
