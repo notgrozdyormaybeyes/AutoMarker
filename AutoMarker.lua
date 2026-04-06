@@ -327,6 +327,8 @@ local core_delay_elapsed = 0
 local aggro_tracker = {}
 
 local solinus_prio = { L["Sanctum Supressor"], L["Sanctum Dragonkin"], L["Sanctum Wyrmkin"], L["Sanctum Scalebane"] }
+-- timbermaw hold spawned adds target prio
+local selenaxx_prio = { L["Foulheart Warlock"], L["Foulheart Warlock"], L["Foulheart Warlock"], L["Foulheart Warlock"] }
 
 local autoMarker = CreateFrame("Frame","AutoMarkerFrame")
 
@@ -528,6 +530,96 @@ local temporary_mobs = {
     raid = L["Ruins of Ahn'Qiraj"],
     live_mark = false, -- a different mechanism will handle live buru eggs
     queue = {},
+  },
+  -- Timbermaw Hold
+  ["Karrrsh Defender"] = {
+    minCount = 1,
+    pack = "karrrsh_defender",
+    raid = L["Timbermaw Hold"],
+    queue = {},
+    live_mark = true, 
+    reverse = false,
+  },
+  ["Karrrsh Sentinel"] = {
+    minCount = 1,
+    pack = "karrrsh_sentinel",
+    raid = L["Timbermaw Hold"],
+    queue = {},
+    live_mark = true, 
+    reverse = false,
+  },
+  ["Trioch Creeping Expulsion"] = {
+    minCount = 1,
+    pack = "trioch_expulsion",
+    raid = L["Timbermaw Hold"],
+    queue = {},
+    live_mark = true, 
+    reverse = false,
+  },
+  ["Tremor of Ormanos"] = {
+    minCount = 1,
+    pack = "ormanos_tremor",
+    raid = L["Timbermaw Hold"],
+    queue = {},
+    live_mark = true, 
+    reverse = false,
+  },
+  ["Son of Ormanos"] = {
+    minCount = 1,
+    pack = "ormanos_son",
+    raid = L["Timbermaw Hold"],
+    queue = {},
+    live_mark = true, 
+    reverse = false,
+  },
+  ["Loktanag Corrupted Globule"] = {
+    minCount = 1,
+    pack = "loktanag_globule",
+    raid = L["Timbermaw Hold"],
+    queue = {},
+    live_mark = true, 
+    reverse = false,
+  },
+  ["Kronn Xavian Form"] = {
+    minCount = 1,
+    pack = "kronn_xavian",
+    raid = L["Timbermaw Hold"],
+    queue = {},
+    live_mark = true, 
+    reverse = false,
+  },
+  -- kronn miasma missing
+  ["Partath Withermaw Shadowkeeper"] = {
+    minCount = 1,
+    pack = "partath_shadowkeeper",
+    raid = L["Timbermaw Hold"],
+    queue = {},
+    live_mark = true, 
+    reverse = false,
+  },
+  ["Selenaxx Foulheart Warlock"] = {
+    minCount = 1,
+    pack = "selenaxx_warlock",
+    raid = L["Timbermaw Hold"],
+    queue = {},
+    live_mark = true, 
+    reverse = false,
+  },
+  ["Ursol Withermaw Corrupter"] = {
+    minCount = 1,
+    pack = "ursol_corrupter",
+    raid = L["Timbermaw Hold"],
+    queue = {},
+    live_mark = true, 
+    reverse = false,
+  },
+  ["Ursol Nightmare Fiend"] = {
+    minCount = 1,
+    pack = "ursol_fiend",
+    raid = L["Timbermaw Hold"],
+    queue = {},
+    live_mark = true, 
+    reverse = false,
   },
 }
 
@@ -966,6 +1058,60 @@ function autoMarker:UNIT_MODEL_CHANGED(guid,debug_id,debug_name)
       return
     end
 
+  -- Timbermaw Hold
+  elseif zone == L["Timbermaw Hold"] then
+    flag_tmh_encounter = false
+    -- Karrsh
+    if name == L["Timbermaw Defender"] then
+      name = "Karrsh Defender"
+      flag_tmh_encounter = true
+    elseif name == L["Timbermaw Sentinel"] then
+      name = "Karrsh Sentinel"
+      flag_tmh_encounter = true
+    -- Trioch
+    elseif name == L["Creeping Expulsion"]) then
+      name = "Trioch Creeping Expulsion"
+      flag_tmh_encounter = true
+    -- Ormanos
+    elseif name == L["Tremor of Ormanos"]) then
+      name = "Tremor of Ormanos"
+      flag_tmh_encounter = true
+    elseif name == L["Son of Ormanos"]) then
+      name = "Son of Ormanos"
+      flag_tmh_encounter = true
+    -- Loktanag
+    elseif name == L["Corrupted Globule"]) then
+      name = "Loktanag Corrupted Globule"
+      flag_tmh_encounter = true
+    -- Archdruid Kronn - Dreamform of Kronn
+    elseif name == L["Xavian Form"]) then
+      name = "Kronn Xavian Form"
+      flag_tmh_encounter = true
+    -- eh i dont need these right elseif name == L["Invading Miasma"]) then
+    -- eh i dont need these right   name = "Kronn Invading Miasma"
+    -- eh i dont need these right   flag_tmh_encounter = true
+    -- Chieftain Partath
+    elseif name == L["Withermaw Shadowkeeper"]) then
+      name = "Partath Withermaw Shadowkeeper"
+      flag_tmh_encounter = true
+    -- Selenaxx
+    elseif name == L["Foulheart Warlock"]) then
+      name = "Selenaxx Foulheart Warlock"
+      flag_tmh_encounter = true
+    -- Ursol
+    elseif name == L["Withermaw Corrupter"]) then
+      name = "Ursol Withermaw Corrupter"
+      flag_tmh_encounter = true
+    elseif name == L["Nightmare Fiend"]) then
+      name = "Ursol Nightmare Fiend"
+      flag_tmh_encounter = true
+    end
+    if flag_tmh_encounter then
+      tinsert(temporary_mobs[name].queue, guid)
+      AutoMarkerDB.checkTemporaryMobs = true
+      return
+    end
+  
   elseif zone == L["Naxxramas"] or zone == L["The Upper Necropolis"] then
     if name == L["Naxxramas Follower"] or name == L["Naxxramas Worshipper"] then
       name = "Faerlina Add"
