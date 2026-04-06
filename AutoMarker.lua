@@ -1069,40 +1069,40 @@ function autoMarker:UNIT_MODEL_CHANGED(guid,debug_id,debug_name)
       name = "Karrsh Sentinel"
       flag_tmh_encounter = true
     -- Trioch
-    elseif name == L["Creeping Expulsion"]) then
+    elseif name == L["Creeping Expulsion"] then
       name = "Trioch Creeping Expulsion"
       flag_tmh_encounter = true
     -- Ormanos
-    elseif name == L["Tremor of Ormanos"]) then
+    elseif name == L["Tremor of Ormanos"] then
       name = "Tremor of Ormanos"
       flag_tmh_encounter = true
-    elseif name == L["Son of Ormanos"]) then
+    elseif name == L["Son of Ormanos"] then
       name = "Son of Ormanos"
       flag_tmh_encounter = true
     -- Loktanag
-    elseif name == L["Corrupted Globule"]) then
+    elseif name == L["Corrupted Globule"] then
       name = "Loktanag Corrupted Globule"
       flag_tmh_encounter = true
     -- Archdruid Kronn - Dreamform of Kronn
-    elseif name == L["Xavian Form"]) then
+    elseif name == L["Xavian Form"] then
       name = "Kronn Xavian Form"
       flag_tmh_encounter = true
     -- eh i dont need these right elseif name == L["Invading Miasma"]) then
     -- eh i dont need these right   name = "Kronn Invading Miasma"
     -- eh i dont need these right   flag_tmh_encounter = true
     -- Chieftain Partath
-    elseif name == L["Withermaw Shadowkeeper"]) then
+    elseif name == L["Withermaw Shadowkeeper"] then
       name = "Partath Withermaw Shadowkeeper"
       flag_tmh_encounter = true
     -- Selenaxx
-    elseif name == L["Foulheart Warlock"]) then
+    elseif name == L["Foulheart Warlock"] then
       name = "Selenaxx Foulheart Warlock"
       flag_tmh_encounter = true
     -- Ursol
-    elseif name == L["Withermaw Corrupter"]) then
+    elseif name == L["Withermaw Corrupter"] then
       name = "Ursol Withermaw Corrupter"
       flag_tmh_encounter = true
-    elseif name == L["Nightmare Fiend"]) then
+    elseif name == L["Nightmare Fiend"] then
       name = "Ursol Nightmare Fiend"
       flag_tmh_encounter = true
     end
