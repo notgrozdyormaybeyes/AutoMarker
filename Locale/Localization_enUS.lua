@@ -67,6 +67,8 @@ if GetLocale() == "enUS" then
         ["Nightmare Fiend"] = "Nightmare Fiend", -- ursol spawned fiend blue beam
         ["Ursan Horror"] = "Ursan Horror", -- ursol spawned bear
         
+        -- ony
+        ["Onyxia's Lair"] = "Onyxia's Lair",
 
         -- mobs: dm
         ["Ironbark Protector"] = "Ironbark Protector",
