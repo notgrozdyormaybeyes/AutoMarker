@@ -1,4 +1,5 @@
 -- || Made by and for Weird Vibes of Turtle WoW || --
+-- new modifications by grozdy because stupid
 local L = AutoMarkerLocale
 BINDING_HEADER_AUTOMARK = L["|cff22CC00 - AutoMark Bindings -"];
 BINDING_NAME_MOUSEOVERKEY = L["Keys to hold to activate mouseover mark"];
@@ -328,7 +329,20 @@ local aggro_tracker = {}
 
 local solinus_prio = { L["Sanctum Supressor"], L["Sanctum Dragonkin"], L["Sanctum Wyrmkin"], L["Sanctum Scalebane"] }
 -- timbermaw hold spawned adds target prio
-local selenaxx_prio = { L["Foulheart Warlock"], L["Foulheart Warlock"], L["Foulheart Warlock"], L["Foulheart Warlock"] }
+local tmh_prio = {
+        karrsh = { L["Timbermaw Defender"], L["Timbermaw Sentinel"] },
+        trioch = { L["Creeping Expulsion"] },
+        ormanos = { L["Tremor of Ormanos"], L["Son of Ormanos"] },
+        loktanag = { L["Corrupted Globule"] },
+        kronn = { L["Xavian Form"] },
+        partath = { L["Withermaw Shadowkeeper"] },
+        selenaxx = { L["Foulheart Warlock"] },
+        ursol = { L["Nightmare Fiend"], L["Withermaw Corrupter"] },
+    }
+local tmh_lasttime = nil
+local tmh_ursol_phasethree = false
+local tmh_ursol_fiend_counter = 0
+
 
 local autoMarker = CreateFrame("Frame","AutoMarkerFrame")
 
@@ -532,24 +546,27 @@ local temporary_mobs = {
     queue = {},
   },
   -- Timbermaw Hold
-  ["Karrrsh Defender"] = {
+  ["Timbermaw Defender"] = {
     minCount = 1,
+    boss = "karrrsh",
     pack = "karrrsh_defender",
     raid = L["Timbermaw Hold"],
     queue = {},
     live_mark = true, 
     reverse = false,
   },
-  ["Karrrsh Sentinel"] = {
+  ["Timbermaw Sentinel"] = {
     minCount = 1,
+    boss = "karrrsh",
     pack = "karrrsh_sentinel",
     raid = L["Timbermaw Hold"],
     queue = {},
     live_mark = true, 
     reverse = false,
   },
-  ["Trioch Creeping Expulsion"] = {
+  ["Creeping Expulsion"] = {
     minCount = 1,
+    boss = "trioch",
     pack = "trioch_expulsion",
     raid = L["Timbermaw Hold"],
     queue = {},
@@ -558,6 +575,7 @@ local temporary_mobs = {
   },
   ["Tremor of Ormanos"] = {
     minCount = 1,
+    boss = "ormanos",
     pack = "ormanos_tremor",
     raid = L["Timbermaw Hold"],
     queue = {},
@@ -566,22 +584,25 @@ local temporary_mobs = {
   },
   ["Son of Ormanos"] = {
     minCount = 1,
+    boss = "ormanos",
     pack = "ormanos_son",
     raid = L["Timbermaw Hold"],
     queue = {},
     live_mark = true, 
     reverse = false,
   },
-  ["Loktanag Corrupted Globule"] = {
+  ["Corrupted Globule"] = {
     minCount = 1,
+    boss = "loktanag",
     pack = "loktanag_globule",
     raid = L["Timbermaw Hold"],
     queue = {},
     live_mark = true, 
     reverse = false,
   },
-  ["Kronn Xavian Form"] = {
+  ["Xavian Form"] = {
     minCount = 1,
+    boss = "kronn",
     pack = "kronn_xavian",
     raid = L["Timbermaw Hold"],
     queue = {},
@@ -589,32 +610,36 @@ local temporary_mobs = {
     reverse = false,
   },
   -- kronn miasma missing
-  ["Partath Withermaw Shadowkeeper"] = {
+  ["Withermaw Shadowkeeper"] = {
     minCount = 1,
+    boss = "partath",
     pack = "partath_shadowkeeper",
     raid = L["Timbermaw Hold"],
     queue = {},
     live_mark = true, 
     reverse = false,
   },
-  ["Selenaxx Foulheart Warlock"] = {
+  ["Foulheart Warlock"] = {
     minCount = 1,
+    boss = "selenaxx",
     pack = "selenaxx_warlock",
     raid = L["Timbermaw Hold"],
     queue = {},
     live_mark = true, 
     reverse = false,
   },
-  ["Ursol Withermaw Corrupter"] = {
+  ["Withermaw Corrupter"] = {
     minCount = 1,
+    boss = "ursol",
     pack = "ursol_corrupter",
     raid = L["Timbermaw Hold"],
     queue = {},
     live_mark = true, 
     reverse = false,
   },
-  ["Ursol Nightmare Fiend"] = {
+  ["Nightmare Fiend"] = {
     minCount = 1,
+    boss = "ursol",
     pack = "ursol_fiend",
     raid = L["Timbermaw Hold"],
     queue = {},
@@ -792,6 +817,7 @@ function autoMarker:Initialize()
       keepers = {},
       protectors = {},
       solnius_adds = { count = 0 },
+      tmh_boss_adds = { count = 0 },
     }
   end
   if not AutoMarkerDB.unitCache then AutoMarkerDB.unitCache = {} end
@@ -804,6 +830,25 @@ function autoMarker:Initialize()
   if not AutoMarkerDB.checkKeepers then AutoMarkerDB.checkKeepers = false end
   if not AutoMarkerDB.checkProtectors then AutoMarkerDB.checkProtectors = false end
   if not AutoMarkerDB.checkTemporaryMobs then AutoMarkerDB.checkTemporaryMobs = false end
+  -- TMH
+  if not AutoMarkerDB.started_karrsh then AutoMarkerDB.started_karrsh = false end
+  if not AutoMarkerDB.started_trioch then AutoMarkerDB.started_trioch = false end
+  if not AutoMarkerDB.started_ormanos then AutoMarkerDB.started_ormanos = false end
+  if not AutoMarkerDB.started_loktanag then AutoMarkerDB.started_loktanag = false end
+  if not AutoMarkerDB.started_kronn then AutoMarkerDB.started_kronn = false end
+  if not AutoMarkerDB.started_partath then AutoMarkerDB.started_partath = false end
+  if not AutoMarkerDB.started_selenaxx then AutoMarkerDB.started_selenaxx = false end
+  if not AutoMarkerDB.started_ursol then AutoMarkerDB.started_ursol = false end
+  
+  tmh_lasttime = nil
+  tmh_ursol_phasethree = false
+  tmh_ursol_fiend_counter = 0
+  
+  
+  
+  
+  
+  
 
   -- clear unit cache
   -- TODO: do this on logout instead?
@@ -879,6 +924,8 @@ local function ClearTemps()
     protectors = {},
     solnius_adds = {},
     solnius_adds = { count = 0 },
+    tmh_boss_adds = {},
+    tmh_boss_adds = { count = 0 },
   }
 
   AutoMarkerDB.started_solnius = false
@@ -889,6 +936,15 @@ local function ClearTemps()
   -- AutoMarkerDB.checkKeepers = false
   -- AutoMarkerDB.checkProtectors = false
   -- AutoMarkerDB.checkTemporaryMobs = false
+  -- TMH
+  AutoMarkerDB.started_karrsh = false
+  AutoMarkerDB.started_trioch = false
+  AutoMarkerDB.started_ormanos = false
+  AutoMarkerDB.started_loktanag = false
+  AutoMarkerDB.started_kronn = false
+  AutoMarkerDB.started_partath = false
+  AutoMarkerDB.started_selenaxx = false
+  AutoMarkerDB.started_ursol = false
 end
 
 function autoMarker:UPDATE_MOUSEOVER_UNIT()
@@ -1007,6 +1063,7 @@ local function TryPatterns(guid,...)
   end
 end
 
+
 -- Workhorse, detects when a unit model is loaded in the client.
 -- Units can technically be checked for exsitence before this but this event lets us do it on the fly.
 function autoMarker:UNIT_MODEL_CHANGED(guid,debug_id,debug_name)
@@ -1060,56 +1117,129 @@ function autoMarker:UNIT_MODEL_CHANGED(guid,debug_id,debug_name)
 
   -- Timbermaw Hold
   elseif zone == L["Timbermaw Hold"] then
-    flag_tmh_encounter = false
-    -- Karrsh
-    if name == L["Timbermaw Defender"] then
-      name = "Karrsh Defender"
-      flag_tmh_encounter = true
-    elseif name == L["Timbermaw Sentinel"] then
-      name = "Karrsh Sentinel"
-      flag_tmh_encounter = true
-    -- Trioch
-    elseif name == L["Creeping Expulsion"] then
-      name = "Trioch Creeping Expulsion"
-      flag_tmh_encounter = true
-    -- Ormanos
-    elseif name == L["Tremor of Ormanos"] then
-      name = "Tremor of Ormanos"
-      flag_tmh_encounter = true
-    elseif name == L["Son of Ormanos"] then
-      name = "Son of Ormanos"
-      flag_tmh_encounter = true
-    -- Loktanag
-    elseif name == L["Corrupted Globule"] then
-      name = "Loktanag Corrupted Globule"
-      flag_tmh_encounter = true
-    -- Archdruid Kronn - Dreamform of Kronn
-    elseif name == L["Xavian Form"] then
-      name = "Kronn Xavian Form"
-      flag_tmh_encounter = true
-    -- eh i dont need these right elseif name == L["Invading Miasma"]) then
-    -- eh i dont need these right   name = "Kronn Invading Miasma"
-    -- eh i dont need these right   flag_tmh_encounter = true
-    -- Chieftain Partath
-    elseif name == L["Withermaw Shadowkeeper"] then
-      name = "Partath Withermaw Shadowkeeper"
-      flag_tmh_encounter = true
-    -- Selenaxx
-    elseif name == L["Foulheart Warlock"] then
-      name = "Selenaxx Foulheart Warlock"
-      flag_tmh_encounter = true
-    -- Ursol
-    elseif name == L["Withermaw Corrupter"] then
-      name = "Ursol Withermaw Corrupter"
-      flag_tmh_encounter = true
-    elseif name == L["Nightmare Fiend"] then
-      name = "Ursol Nightmare Fiend"
+    local flag_tmh_encounter = false
+    local tmh_boss = nil
+    local tmh_spawnthreshold = 1
+    
+    
+    local info = temporary_mobs[name]
+    local boss = temporary_mobs[name]["boss"]
+    if info and boss and UnitAffectingCombat(guid) then
+      tmh_boss = boss
       flag_tmh_encounter = true
     end
+
+    -- Selenaxx
+    if tmh_boss == "selenaxx" and name == L["Foulheart Warlock"] then
+        tmh_spawnthreshold = 2
+    end
+    
+    -- Ursol logic
+    if tmh_boss == "ursol" and name == L["Nightmare Fiend"] then
+      local now = GetTime()
+      local delta = tmh_lasttime and (now - tmh_lasttime) or 99999
+
+      if not tmh_ursol_phasethree and delta > 12 then
+        tmh_lasttime = now
+        tmh_ursol_fiend_counter = tmh_ursol_fiend_counter + 1
+        tmh_spawnthreshold = math.min(8, 2 * tmh_ursol_fiend_counter)
+
+      elseif tmh_ursol_phasethree and delta > 12 then
+        tmh_lasttime = now
+        tmh_ursol_fiend_counter = tmh_ursol_fiend_counter + 1
+        tmh_spawnthreshold = math.min(4, tmh_ursol_fiend_counter)
+
+      elseif delta > 40 then
+        tmh_ursol_phasethree = true
+        tmh_lasttime = now
+        tmh_ursol_fiend_counter = 1
+        tmh_spawnthreshold = 1
+      end
+    end
+    --     -- Karrsh
+    --     if name == L["Timbermaw Defender"] and UnitAffectingCombat(guid) then
+    --       tmh_boss = "karrsh"
+    --       flag_tmh_encounter = true
+    --     elseif name == L["Timbermaw Sentinel"] and UnitAffectingCombat(guid) then
+    --       tmh_boss = "karrsh"
+    --       flag_tmh_encounter = true
+    --     -- Trioch
+    --     elseif name == L["Creeping Expulsion"] and UnitAffectingCombat(guid) then
+    --       tmh_boss = "trioch"
+    --       flag_tmh_encounter = true
+    --     -- Ormanos
+    --     elseif name == L["Tremor of Ormanos"] and UnitAffectingCombat(guid) then
+    --       tmh_boss = "ormanos"
+    --       flag_tmh_encounter = true
+    --     elseif name == L["Son of Ormanos"] and UnitAffectingCombat(guid) then
+    --       tmh_boss = "ormanos"
+    --       flag_tmh_encounter = true
+    --     -- Loktanag
+    --     elseif name == L["Corrupted Globule"] and UnitAffectingCombat(guid) then
+    --       tmh_boss = "loktanag"
+    --       flag_tmh_encounter = true
+    --     -- Archdruid Kronn - Dreamform of Kronn
+    --     elseif name == L["Xavian Form"] and UnitAffectingCombat(guid) then
+    --       tmh_boss = "kronn"
+    --       flag_tmh_encounter = true
+    --     -- eh i dont need these right elseif name == L["Invading Miasma"]) then
+    --     -- eh i dont need these right   name = "Kronn Invading Miasma"
+    --     -- eh i dont need these right   flag_tmh_encounter = true
+    --     -- Chieftain Partath
+    --     elseif name == L["Withermaw Shadowkeeper"] and UnitAffectingCombat(guid) then
+    --       tmh_boss = "partath"
+    --       flag_tmh_encounter = true
+    --     -- Selenaxx
+    --     elseif name == L["Foulheart Warlock"] and UnitAffectingCombat(guid) then
+    --       tmh_boss = "selenaxx"
+    --       flag_tmh_encounter = true
+    --     local tmh_spawnthreshold = 2
+    --     -- Ursol
+    --     elseif name == L["Withermaw Corrupter"] and UnitAffectingCombat(guid) then
+    --       tmh_boss = "ursol"
+    --       flag_tmh_encounter = true
+    --     elseif name == L["Nightmare Fiend"] and UnitAffectingCombat(guid) then
+    --       tmh_boss = "ursol"
+    --       flag_tmh_encounter = true
+    --       local tmh_newtime = GetTime()
+    --       if tmh_ursol_phasethree == false and (tmh_lasttime == nil or (tmh_newtime - tmh_lasttime) > 12) then --phase 2
+    --         tmh_lasttime = tmh_newtime
+    --         tmh_ursol_fiend_counter = tmh_ursol_fiend_counter + 1
+    --         tmh_spawnthreshold = math.min(8, 2 * tmh_ursol_fiend_counter)
+    --       elseif tmh_ursol_phasethree and (tmh_newtime - tmh_lasttime) > 12 then --phase 3
+    --         tmh_lasttime = tmh_newtime
+    --         tmh_ursol_fiend_counter = tmh_ursol_fiend_counter + 1
+    --         tmh_spawnthreshold = math.min(4, tmh_ursol_fiend_counter)
+    --       elseif (tmh_newtime - tmh_lasttime) > 40 then --phase 3 starts
+    --         tmh_ursol_phasethree = true
+    --         tmh_lasttime = tmh_newtime
+    --         tmh_ursol_fiend_counter = 1
+    --         tmh_spawnthreshold = math.min(4, tmh_ursol_fiend_counter)
+    --       end
+    --     end
     if flag_tmh_encounter then
-      tinsert(temporary_mobs[name].queue, guid)
-      AutoMarkerDB.checkTemporaryMobs = true
-      return
+      -- TMH adds
+      if elem(tmh_prio[tmh_boss], name) then
+        AutoMarkerDB.temp_values.tmh_boss_adds[name] = AutoMarkerDB.temp_values.tmh_boss_adds[name] or {}
+        tinsert(AutoMarkerDB.temp_values.tmh_boss_adds[name], guid)
+        AutoMarkerDB.temp_values.tmh_boss_adds.count = (AutoMarkerDB.temp_values.tmh_boss_adds.count or 0) + 1
+      
+        if AutoMarkerDB.temp_values.tmh_boss_adds.count >= tmh_spawnthreshold then
+          -- check each entry by prio and assign marks
+          local ix = 1
+          for _,mobtype in ipairs(tmh_prio[tmh_boss]) do
+            for _,guid in ipairs(AutoMarkerDB.temp_values.tmh_boss_adds[mobtype] or {}) do
+              local mark_id = 9-ix
+              MarkUnit(guid,mark_id)
+              ix = ix + 1
+            end
+          end
+          ClearTemps()
+        end
+        return
+      end
+    
+    
     end
   
   elseif zone == L["Naxxramas"] or zone == L["The Upper Necropolis"] then
