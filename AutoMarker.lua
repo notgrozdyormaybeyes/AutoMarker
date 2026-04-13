@@ -646,6 +646,15 @@ local temporary_mobs = {
     live_mark = true, 
     reverse = false,
   },
+  ["Perotharn Satyr"] = {
+    minCount = 6,
+    boss = "perotharn",
+    pack = "perotharn_satyrs",
+    raid = L["Timbermaw Hold"],
+    live_mark = False,
+    queue = {},
+    reverse = false,
+  },
 }
 
 -- Order them and assign them ordered source marks
@@ -1039,6 +1048,7 @@ local patterns = {
   rupturan_dirt_mound         = "^0xF13000EA3427",
   naxx_plague_gargs           = "^0xF130003F2801",
   buru_eggs                   = "^0xF130003C9A27",
+  perotharn_satyrs            = "^0xF13000ED0C27",
 }
 
 -- start with skull unless reversed
@@ -1128,7 +1138,11 @@ function autoMarker:UNIT_MODEL_CHANGED(guid,debug_id,debug_name)
       tmh_boss = boss
       flag_tmh_encounter = true
     end
-
+    
+    -- Peroth'arn
+    if tmh_boss == "perotharn" and name == L["Foulheart Manipulator"] then
+        tmh_spawnthreshold = 6
+    end
     -- Selenaxx
     if tmh_boss == "selenaxx" and name == L["Foulheart Warlock"] then
         tmh_spawnthreshold = 2
@@ -1137,23 +1151,36 @@ function autoMarker:UNIT_MODEL_CHANGED(guid,debug_id,debug_name)
     -- Ursol logic
     if tmh_boss == "ursol" and name == L["Nightmare Fiend"] then
       local now = GetTime()
-      local delta = tmh_lasttime and (now - tmh_lasttime) or 99999
+      local delta
+      if tmh_lasttime == nil then
+        delta = 13
+      else 
+        delta = (now - tmh_lasttime)
+      end 
 
       if not tmh_ursol_phasethree and delta > 12 then
         tmh_lasttime = now
         tmh_ursol_fiend_counter = tmh_ursol_fiend_counter + 1
         tmh_spawnthreshold = math.min(8, 2 * tmh_ursol_fiend_counter)
 
-      elseif tmh_ursol_phasethree and delta > 12 then
+      elseif tmh_ursol_phasethree and delta > 12 and delta < 60 then
+        -- after immune phase
         tmh_lasttime = now
         tmh_ursol_fiend_counter = tmh_ursol_fiend_counter + 1
         tmh_spawnthreshold = math.min(4, tmh_ursol_fiend_counter)
 
+      elseif tmh_ursol_phasethree and delta > 60 then
+        -- after a wipe
+        tmh_ursol_phasethree = false
+        tmh_lasttime = now
+        tmh_ursol_fiend_counter = 1
+        tmh_spawnthreshold = math.min(8, 2 * tmh_ursol_fiend_counter)
       elseif delta > 40 then
+        -- after immune phase
         tmh_ursol_phasethree = true
         tmh_lasttime = now
         tmh_ursol_fiend_counter = 1
-        tmh_spawnthreshold = 1
+        tmh_spawnthreshold = math.min(4, tmh_ursol_fiend_counter)
       end
     end
     --     -- Karrsh
@@ -1238,10 +1265,9 @@ function autoMarker:UNIT_MODEL_CHANGED(guid,debug_id,debug_name)
         end
         return
       end
-    
-    
     end
-  
+    
+    
   elseif zone == L["Naxxramas"] or zone == L["The Upper Necropolis"] then
     if name == L["Naxxramas Follower"] or name == L["Naxxramas Worshipper"] then
       name = "Faerlina Add"
