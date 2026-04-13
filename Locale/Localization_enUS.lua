@@ -67,6 +67,9 @@ if GetLocale() == "enUS" then
         ["Nightmare Fiend"] = "Nightmare Fiend", -- ursol spawned fiend blue beam
         ["Ursan Horror"] = "Ursan Horror", -- ursol spawned bear
         
+        ["Peroth'arn"] = "Peroth'arn", -- peroth'arn boss
+        ["Foulheart Manipulator"] = "Foulheart Manipulator", -- 6 mini satyrs
+        
         -- ony
         ["Onyxia's Lair"] = "Onyxia's Lair",
 
